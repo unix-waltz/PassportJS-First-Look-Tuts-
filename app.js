@@ -1,4 +1,6 @@
 import env from 'dotenv';
+import mongoose from 'mongoose';
+import MongoCn from './Database/Mongoose.js'
 env.config()
 import express from 'express';
 const app = express();
