@@ -1,9 +1,15 @@
+import env from 'dotenv';
+env.config()
 import passport from 'passport';
 import GoogleStrategy from 'passport-google-oauth20';
-passport.use(
+export default passport.use(
     new GoogleStrategy({
+clientID: process.env.GOOGLE_CLIENT_ID,
+clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+callbackURL: "/auth/google/redirect"
+    },(accesToken,refreshToken,profileInformation,done) => {
 
-    }),() => {
-        
-    }
+       console.log('succes login')
+       console.log(profileInformation)
+    })
     );

@@ -1,3 +1,5 @@
+import env from 'dotenv';
+env.config()
 import express from 'express';
 const app = express();
 import AuthRoutes from "./routes/auth-routes.js"
@@ -8,4 +10,6 @@ app.get('/',(req,res) => {
     })
 
 app.use('/auth',AuthRoutes)
-app.listen(3001);
+app.listen(process.env.LOCAL_APP_PORT,() => {
+    console.log(`listening on ${process.env.LOCAL_APP_PORT}`)
+});
